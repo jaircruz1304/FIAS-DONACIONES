@@ -18,14 +18,15 @@ jobs:
 
     steps:
       - name: Descargar repositorio
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Configurar Node.js 24
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
+          package-manager-cache: false
 
       - name: Mostrar versión de Node y npm
         run: |
@@ -69,16 +70,32 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          echo "=== Estado antes de publicar ==="
+          git status --short
+
+          if git diff --quiet -- data/control-donaciones.json data/control-donaciones-meta.json; then
+            echo "No hay cambios en los datos."
+            exit 0
+          fi
+
+          echo "Guardando temporalmente los cambios generados..."
+          git stash push -m "datos-generados-donaciones" -- data/control-donaciones.json data/control-donaciones-meta.json
+
+          echo "Sincronizando rama local con origin/main..."
+          git pull --rebase origin main
+
+          echo "Restaurando cambios generados..."
+          git stash pop || true
+
+          echo "Agregando archivos generados..."
           git add data/control-donaciones.json data/control-donaciones-meta.json
 
           if git diff --cached --quiet; then
-            echo "No hay cambios en los datos."
-          else
-            git commit -m "Actualizar datos de donaciones"
-
-            echo "Sincronizando con la rama remota antes del push..."
-            git pull --rebase origin main
-
-            echo "Enviando cambios a GitHub..."
-            git push origin main
+            echo "Después de sincronizar, no hay cambios que publicar."
+            exit 0
           fi
+
+          git commit -m "Actualizar datos de donaciones"
+
+          echo "Enviando cambios a GitHub..."
+          git push origin main
