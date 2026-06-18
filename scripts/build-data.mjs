@@ -7,20 +7,22 @@ const OUT_DIR = 'data';
 const OUT_JSON = path.join(OUT_DIR, 'control-donaciones.json');
 const OUT_META = path.join(OUT_DIR, 'control-donaciones-meta.json');
 
-const SHARE_ID = 'IQAWjBvkE6TPTG6b5vhBTZxcAaAldunzyoWrEzM5q5mVINo';
+const SHARE_ID = 'IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo';
+
+const SHARE_LINK = 'https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo';
 
 const DOWNLOAD_CANDIDATES = [
   {
-    name: 'SharePoint download.aspx',
+    name: 'Share link exacto con download=1',
+    url: `${SHARE_LINK}?download=1`
+  },
+  {
+    name: 'Share link exacto con web=0 y download=1',
+    url: `${SHARE_LINK}?web=0&download=1`
+  },
+  {
+    name: 'SharePoint download.aspx con share id',
     url: `https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=${SHARE_ID}`
-  },
-  {
-    name: 'Share link con download=1',
-    url: 'https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQAWjBvkE6TPTG6b5vhBTZxcAaAldunzyoWrEzM5q5mVINo?e=YRRr8R&download=1'
-  },
-  {
-    name: 'Share link con download=1 y web=0',
-    url: 'https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQAWjBvkE6TPTG6b5vhBTZxcAaAldunzyoWrEzM5q5mVINo?e=YRRr8R&download=1&web=0'
   }
 ];
 
