@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Control de Donaciones FIAS</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --fias-green: #2c7d32;
+      --fias-green-dark: #1b5e20;
+      --fias-green-soft: #e8f5e9;
+      --fias-lime: #8bc34a;
+      --fias-yellow: #ffc107;
+      --fias-orange: #f97316;
+      --fias-red: #dc3545;
+      --ink: #24323d;
+      --muted: #697586;
+      --bg: #f4f7f5;
+      --card: #ffffff;
+      --line: rgba(15, 23, 42, .09);
+      --shadow: 0 18px 45px rgba(20, 58, 31, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(139, 195, 74, .18), transparent 35%),
+        linear-gradient(180deg, #f6faf6 0%, var(--bg) 42%, #eef5ef 100%);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .app-shell { display: flex; min-height: 100vh; }
+
+    .sidebar {
+      width: 310px;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+      border-right: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      z-index: 1020;
+      box-shadow: 12px 0 35px rgba(20, 58, 31, .05);
+    }
+
+    .sidebar-logo {
+      padding: 1.25rem 1.35rem 1rem;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
+    }
+
+    .brand-box { display: flex; align-items: center; gap: .85rem; }
+    .brand-box img { max-width: 150px; max-height: 52px; object-fit: contain; }
+    .brand-mini { font-size: .76rem; color: var(--muted); line-height: 1.25; }
+
+    .side-content { padding: 1rem; overflow-y: auto; flex: 1; }
+    .filter-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-bottom: .85rem;
+      box-shadow: 0 10px 28px rgba(0,0,0,.035);
+    }
+    .filter-title {
+      display: flex; align-items: center; justify-content: space-between;
+      font-weight: 800; color: var(--fias-green-dark); font-size: .92rem;
+      margin-bottom: .75rem;
+    }
+    .filter-list { max-height: 175px; overflow: auto; padding-right: .25rem; }
+    .filter-option {
+      display: flex; gap: .55rem; align-items: flex-start;
+      padding: .42rem .35rem;
+      border-radius: 10px;
+      color: #435162;
+      font-size: .86rem;
+    }
+    .filter-option:hover { background: var(--fias-green-soft); }
+    .filter-option input { margin-top: .18rem; accent-color: var(--fias-green); }
+    .filter-chip {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: var(--fias-green-soft); color: var(--fias-green-dark);
+      border: 1px solid rgba(44, 125, 50, .16);
+      font-size: .75rem; border-radius: 999px; padding: .22rem .52rem;
+    }
+
+    .sidebar-footer {
+      padding: 1rem 1.2rem;
+      border-top: 1px solid var(--line);
+      background: #fafcfa;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+    .sidebar-footer a { color: var(--fias-green-dark); text-decoration: none; font-weight: 800; }
+
+    .main { flex: 1; min-width: 0; }
+    .topbar {
+      position: sticky; top: 0; z-index: 1010;
+      background: rgba(246, 250, 246, .88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(44, 125, 50, .11);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .9rem 1.6rem;
+    }
+    .mobile-logo { max-height: 42px; max-width: 135px; object-fit: contain; }
+
+    .hero {
+      margin: 1.4rem 1.6rem 1rem;
+      background:
+        linear-gradient(135deg, rgba(27, 94, 32, .96) 0%, rgba(44, 125, 50, .94) 52%, rgba(139, 195, 74, .9) 100%),
+        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=70') center/cover;
+      color: #fff;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at right top, rgba(255,255,255,.22), transparent 32%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; padding: clamp(1.4rem, 3vw, 2.45rem); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px; padding: .35rem .72rem; font-size: .78rem; font-weight: 700;
+      margin-bottom: .9rem;
+    }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 3.25rem); font-weight: 900; letter-spacing: -.04em; margin: 0; }
+    .hero p { max-width: 860px; color: rgba(255,255,255,.86); margin-top: .75rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.15rem; }
+
+    .content-wrap { padding: 0 1.6rem 2rem; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(160px, 1fr));
+      gap: .95rem;
+      margin: 1rem 0 1.15rem;
+    }
+    .kpi {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,.045);
+      position: relative; overflow: hidden;
+      min-height: 128px;
+    }
+    .kpi::before {
+      content: ""; position: absolute; width: 110px; height: 110px; right: -42px; top: -52px;
+      background: rgba(44, 125, 50, .1); border-radius: 999px;
+    }
+    .kpi .icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--fias-green-soft); color: var(--fias-green-dark);
+      margin-bottom: .8rem;
+    }
+    .kpi small { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .kpi strong { display: block; font-size: clamp(1.25rem, 2.4vw, 1.85rem); letter-spacing: -.03em; margin-top: .15rem; }
+
+    .panel {
+      background: rgba(255, 255, 255, .93);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 15px 36px rgba(0,0,0,.055);
+      margin-bottom: 1.05rem;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 1rem 1.15rem;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      background: linear-gradient(180deg, #fff 0%, #fbfdfb 100%);
+    }
+    .panel-title { margin: 0; font-weight: 850; color: var(--fias-green-dark); font-size: 1.05rem; display: flex; align-items: center; gap: .5rem; }
+    .panel-body { padding: 1rem; }
+
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .chart-box { min-height: 310px; position: relative; }
+    .chart-box canvas { width: 100% !important; max-height: 310px; }
+
+    .priority-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
+    .priority-card {
+      border: 1px solid var(--line); border-radius: 18px; padding: .95rem;
+      background: #fff; transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .priority-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.08); }
+    .priority-card h6 { font-weight: 850; margin-bottom: .5rem; }
+    .priority-card p { color: #51606f; font-size: .88rem; margin-bottom: .55rem; }
+    .priority-goods {
+      background: linear-gradient(135deg, rgba(44, 125, 50, .08), rgba(139, 195, 74, .12));
+      border: 1px solid rgba(44, 125, 50, .16);
+      border-radius: 14px;
+      padding: .72rem .82rem;
+      margin: .55rem 0 .7rem;
+      color: #263b2c;
+      font-size: .9rem;
+      line-height: 1.38;
+    }
+    .priority-goods .label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .74rem;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+      color: var(--fias-green-dark);
+      font-weight: 900;
+      margin-bottom: .28rem;
+    }
+    .priority-action {
+      border-left: 3px solid var(--fias-lime);
+      padding-left: .65rem;
+    }
+
+    .toolbar { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; }
+    .search-box { position: relative; min-width: min(100%, 360px); flex: 1; }
+    .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+    .search-box input { padding-left: 2.55rem; border-radius: 999px; border-color: rgba(44,125,50,.18); }
+    .search-box input:focus { border-color: var(--fias-green); box-shadow: 0 0 0 .25rem rgba(44,125,50,.13); }
+
+    .btn-fias { background: var(--fias-green); color: #fff; border-color: var(--fias-green); font-weight: 750; }
+    .btn-fias:hover { background: var(--fias-green-dark); color: #fff; border-color: var(--fias-green-dark); }
+    .btn-outline-fias { color: var(--fias-green-dark); border-color: rgba(44,125,50,.28); font-weight: 750; background: #fff; }
+    .btn-outline-fias:hover { background: var(--fias-green-soft); color: var(--fias-green-dark); border-color: var(--fias-green); }
+
+    .badge-state, .badge-lightish {
+      border-radius: 999px; padding: .32rem .58rem; font-weight: 800; font-size: .76rem; display: inline-flex; align-items: center; gap: .35rem;
+    }
+    .state-proceso { background: #e8f5e9; color: #1b5e20; }
+    .state-pendiente { background: #fff7e6; color: #9a5b00; }
+    .state-sininiciar { background: #eef2f7; color: #475467; }
+    .sem-critico { background: #ffe9e9; color: #b42318; }
+    .sem-normal { background: #e7f8ee; color: #067647; }
+    .sem-sininiciar { background: #eef2f7; color: #475467; }
+
+    .progress { height: 10px; background: #edf2ef; border-radius: 999px; }
+    .progress-bar { background: linear-gradient(90deg, var(--fias-green), var(--fias-lime)); }
+
+    table.dataTable thead th {
+      background: #f3f8f3 !important;
+      color: var(--fias-green-dark);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(44,125,50,.2) !important;
+    }
+    table.dataTable tbody td { vertical-align: middle; font-size: .9rem; }
+    .dataTables_wrapper .dataTables_length select,
+    .dataTables_wrapper .dataTables_filter input { border-radius: 999px; }
+
+    .detail-label { color: var(--muted); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .detail-value { color: var(--ink); margin-bottom: .85rem; }
+
+    .mobile-filter-toggle { display: none; }
+    .table-responsive { overflow-x: auto; }
+    .toast-container { z-index: 2000; }
+
+    @media (max-width: 1200px) {
+      .kpi-grid { grid-template-columns: repeat(3, minmax(160px, 1fr)); }
+      .priority-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 992px) {
+      .app-shell { display: block; }
+      .sidebar {
+        position: fixed; left: 0; top: 0; transform: translateX(-105%);
+        transition: transform .25s ease; width: min(88vw, 340px);
+      }
+      .sidebar.show { transform: translateX(0); }
+      .mobile-filter-toggle { display: inline-flex; }
+      .topbar-inner { padding: .75rem 1rem; }
+      .hero { margin: 1rem; }
+      .content-wrap { padding: 0 1rem 1.4rem; }
+      .chart-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+      .priority-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 576px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .toolbar { display: block; }
+      .toolbar > * { width: 100%; margin-bottom: .55rem; }
+      .panel-header { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media print {
+      .sidebar, .topbar, .hero-actions, .btn, .toolbar, .dataTables_length, .dataTables_filter, .dataTables_paginate, .dataTables_info { display: none !important; }
+      .main, .content-wrap, .hero { margin: 0 !important; padding: 0 !important; }
+      body { background: #fff; }
+      .panel, .kpi, .hero { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="brand-box">
+          <img src="https://fias.org.ec/wp-content/uploads/2021/11/Logo_FIAS_web.png" alt="Logo institucional FIAS" onerror="this.src='https://raw.githubusercontent.com/jaircruz1304/FIAS/main/Logo_FIAS.png'">
+          
+        </div>
+      </div>
+      <div class="side-content">
+        <div class="filter-card">
+          <div class="filter-title"><span><i class="fa-solid fa-sliders me-2"></i>Filtros rápidos</span><span class="filter-chip" id="activeFilters">0 activos</span></div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-sm btn-fias" id="btnCriticos"><i class="fa-solid fa-triangle-exclamation me-1"></i> Mostrar críticos</button>
+            <button class="btn btn-sm btn-outline-fias" id="btnReset"><i class="fa-solid fa-rotate-left me-1"></i> Restablecer filtros</button>
+          </div>
+        </div>
+
+        <div class="filter-card"><div class="filter-title"><span><i class="fa-solid fa-layer-group me-2"></i>Programa / Proyecto</span></div><div class="filter-list" id="filterPrograma"></div></div>
+        <div class="filter-card"><div class="filter-title"><span><i class="fa-solid fa-signal me-2"></i>Estado</span></div><div class="filter-list" id="filterEstado"></div></div>
+        <div class="filter-card"><div class="filter-title"><span><i class="fa-solid fa-traffic-light me-2"></i>Semáforo</span></div><div class="filter-list" id="filterSemaforo"></div></div>
+        <div class="filter-card"><div class="filter-title"><span><i class="fa-solid fa-reply me-2"></i>Respuesta del beneficiario</span></div><div class="filter-list" id="filterRespuesta"></div></div>
+        <div class="filter-card"><div class="filter-title"><span><i class="fa-solid fa-building-user me-2"></i>Beneficiario</span></div><div class="filter-list" id="filterBeneficiario"></div></div>
+      </div>
+      <div class="sidebar-footer">
+        
+      
+        <div class="mt-2">Desarrollado por:<br><a href="https://www.linkedin.com/in/jair-cruz-gallegos-65998776/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin me-1"></i>Jair Cruz Gallegos</a></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-inner">
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-fias mobile-filter-toggle" id="openFilters"><i class="fa-solid fa-bars"></i></button>
+            <img src="https://fias.org.ec/wp-content/uploads/2021/11/Logo_FIAS_web.png" class="mobile-logo d-lg-none" alt="FIAS">
+            <div class="d-none d-lg-block">
+              <strong>Control de Donaciones</strong><br><small class="text-muted">Seguimiento administrativo y documental</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-2 flex-wrap justify-content-end">
+            <small id="sourceLabel" class="text-muted d-none d-xl-inline">Fuente: cargando datos JSON local...</small>
+            <input type="file" id="excelInput" class="d-none" accept=".xlsx,.xls,.csv">
+            <button class="btn btn-outline-fias btn-sm" id="btnLoadExcel"><i class="fa-solid fa-file-excel me-1"></i> Cargar Excel manual</button>
+            <button class="btn btn-outline-fias btn-sm" id="btnExportCsv"><i class="fa-solid fa-download me-1"></i> Exportar CSV</button>
+            <button class="btn btn-fias btn-sm" onclick="window.print()"><i class="fa-solid fa-print me-1"></i> Imprimir</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="hero-content">
+         
+          <h1>Control de Donaciones</h1>
+          <p>Herramienta web interactiva para consultar, filtrar, categorizar y visualizar el estado de las donaciones, sus valores, responsables, alertas, acciones pendientes y expedientes digitales.</p>
+          <div class="hero-actions">
+            <a href="#tabla" class="btn btn-light fw-bold"><i class="fa-solid fa-table me-1"></i> Ver tabla dinámica</a>
+            <a href="#prioridades" class="btn btn-outline-light fw-bold"><i class="fa-solid fa-list-check me-1"></i> Acciones prioritarias</a>
+            
+          </div>
+        </div>
+      </section>
+
+      <div class="content-wrap">
+        <section class="kpi-grid" aria-label="Indicadores principales">
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div><small>Donaciones</small><strong id="kpiTotal">0</strong><span class="text-muted small">registros visualizados</span></div>
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-dollar-sign"></i></div><small>Monto estimado</small><strong id="kpiMonto">$0</strong><span class="text-muted small">USD consolidado</span></div>
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-chart-line"></i></div><small>Avance promedio</small><strong id="kpiAvance">0%</strong><span class="text-muted small">sobre registros filtrados</span></div>
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-spinner"></i></div><small>En proceso</small><strong id="kpiProceso">0</strong><span class="text-muted small">donaciones activas</span></div>
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div><small>Alertas críticas</small><strong id="kpiCriticas">0</strong><span class="text-muted small">requieren atención</span></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Exploración rápida</h2>
+            <span class="filter-chip" id="visibleCounter">0 registros</span>
+          </div>
+          <div class="panel-body">
+            <div class="toolbar">
+              <div class="search-box"><i class="fa-solid fa-search"></i><input class="form-control" id="globalSearch" placeholder="Buscar por beneficiario, programa, responsable, trámite, observación..." /></div>
+              <select class="form-select" id="avanceFilter" style="max-width: 230px;"><option value="all">Todos los avances</option><option value="0-25">0% a 25%</option><option value="26-50">26% a 50%</option><option value="51-75">51% a 75%</option><option value="76-100">76% a 100%</option></select>
+              <select class="form-select" id="montoFilter" style="max-width: 230px;"><option value="all">Todos los montos</option><option value="0-50000">Hasta $50.000</option><option value="50000-150000">$50.000 a $150.000</option><option value="150000-999999999">Más de $150.000</option></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="chart-grid">
+          <div class="panel"><div class="panel-header"><h2 class="panel-title"><i class="fa-solid fa-chart-pie"></i> Donaciones por estado</h2></div><div class="panel-body chart-box"><canvas id="chartEstado"></canvas></div></div>
+          <div class="panel"><div class="panel-header"><h2 class="panel-title"><i class="fa-solid fa-chart-column"></i> Monto por programa</h2></div><div class="panel-body chart-box"><canvas id="chartPrograma"></canvas></div></div>
+          <div class="panel"><div class="panel-header"><h2 class="panel-title"><i class="fa-solid fa-traffic-light"></i> Semáforo de alertas</h2></div><div class="panel-body chart-box"><canvas id="chartSemaforo"></canvas></div></div>
+          <div class="panel"><div class="panel-header"><h2 class="panel-title"><i class="fa-solid fa-bars-progress"></i> Avance por donación</h2></div><div class="panel-body chart-box"><canvas id="chartAvance"></canvas></div></div>
+        </section>
+
+        <section class="panel" id="prioridades">
+          <div class="panel-header">
+            <h2 class="panel-title"><i class="fa-solid fa-list-check"></i> Acciones prioritarias sugeridas</h2>
+            <small class="text-muted">Ordenado por criticidad y días de gestión</small>
+          </div>
+          <div class="panel-body"><div class="priority-grid" id="priorityGrid"></div></div>
+        </section>
+
+        <section class="panel" id="tabla">
+          <div class="panel-header">
+            <h2 class="panel-title"><i class="fa-solid fa-table"></i> Tabla interactiva de control</h2>
+            <small class="text-muted">Ordenable, buscable y adaptable a móviles</small>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table id="donacionesTable" class="table table-hover align-middle nowrap" style="width:100%">
+                <thead><tr>
+                  <th>Nro.</th><th>Programa</th><th>Beneficiario</th><th>Valor</th><th>Estado</th><th>Avance</th><th>Respuesta</th><th>Semáforo</th><th>Días</th><th>Responsable</th><th>Acciones</th>
+                </tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content border-0 rounded-4 shadow-lg">
+        <div class="modal-header" style="background:linear-gradient(135deg,var(--fias-green-dark),var(--fias-green)); color:#fff;">
+          <div><h5 class="modal-title fw-bold" id="detailTitle">Detalle de donación</h5><small id="detailSubtitle" class="opacity-75"></small></div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-4" id="detailBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex"><div class="toast-body" id="toastText">Listo.</div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script>
+    // Fuente pública local generada desde el Excel.
+    // No existen registros de donaciones embebidos en este HTML.
+    // El archivo JSON debe ubicarse en /data/control-donaciones.json dentro del mismo repositorio de GitHub Pages.
+    const DATA_URL = './data/control-donaciones.json';
+
+    const logoFallback = 'https://raw.githubusercontent.com/jaircruz1304/FIAS/main/Logo_FIAS.png';
+    let dataset = [];
+    let filtered = [];
+    let table = null;
+    let charts = {};
+    let activeFilters = { programa: new Set(), estado: new Set(), semaforo: new Set(), respuesta: new Set(), beneficiario: new Set() };
+
+    const moneyFmt = new Intl.NumberFormat('es-EC', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+    const numFmt = new Intl.NumberFormat('es-EC');
+
+    const palette = {
+      green: '#2c7d32', dark: '#1b5e20', lime: '#8bc34a', yellow: '#ffc107', orange: '#f97316', red: '#dc3545', blue: '#0d6efd', gray: '#6c757d', teal: '#20c997', purple: '#6f42c1'
+    };
+
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>'"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[s]));
+    }
+    function normalizeText(v) { return String(v ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+    function pct(v) { return `${Math.round((Number(v)||0)*100)}%`; }
+    function progressHtml(v) { const p = Math.max(0, Math.min(100, Math.round((Number(v)||0)*100))); return `<div class="d-flex align-items-center gap-2"><div class="progress flex-grow-1"><div class="progress-bar" style="width:${p}%"></div></div><strong class="small">${p}%</strong></div>`; }
+    function stateBadge(estado) {
+      const key = normalizeText(estado).replace(/\s/g,'');
+      const cls = key.includes('proceso') ? 'state-proceso' : key.includes('pendiente') ? 'state-pendiente' : key.includes('sininiciar') ? 'state-sininiciar' : 'state-proceso';
+      const icon = key.includes('proceso') ? 'fa-spinner' : key.includes('pendiente') ? 'fa-hourglass-half' : key.includes('sininiciar') ? 'fa-circle-minus' : 'fa-circle-check';
+      return `<span class="badge-state ${cls}"><i class="fa-solid ${icon}"></i>${esc(estado || 'Sin dato')}</span>`;
+    }
+    function semBadge(semaforo) {
+      const key = normalizeText(semaforo).replace(/\s/g,'');
+      const cls = key.includes('critico') ? 'sem-critico' : key.includes('normal') ? 'sem-normal' : 'sem-sininiciar';
+      const icon = key.includes('critico') ? 'fa-triangle-exclamation' : key.includes('normal') ? 'fa-circle-check' : 'fa-circle-minus';
+      return `<span class="badge-state ${cls}"><i class="fa-solid ${icon}"></i>${esc(semaforo || 'Sin dato')}</span>`;
+    }
+    function uniqueValues(key) { return [...new Set(dataset.map(d => d[key]).filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b),'es')); }
+    function countBy(arr, key) { return arr.reduce((acc, item) => { const k = item[key] || 'Sin dato'; acc[k] = (acc[k] || 0) + 1; return acc; }, {}); }
+    function sumByGroup(arr, key, valueKey) { return arr.reduce((acc, item) => { const k = item[key] || 'Sin dato'; acc[k] = (acc[k] || 0) + (Number(item[valueKey]) || 0); return acc; }, {}); }
+
+    function renderFilter(containerId, key, labelKey = key) {
+      const el = document.getElementById(containerId);
+      el.innerHTML = uniqueValues(labelKey).map((value, idx) => `
+        <label class="filter-option">
+          <input type="checkbox" data-filter="${key}" value="${esc(value)}" id="${key}-${idx}">
+          <span>${esc(value)} <small class="text-muted">(${dataset.filter(d => d[labelKey] === value).length})</small></span>
+        </label>`).join('') || '<small class="text-muted">Sin opciones disponibles</small>';
+    }
+
+    function buildFilters() {
+      renderFilter('filterPrograma', 'programa');
+      renderFilter('filterEstado', 'estado');
+      renderFilter('filterSemaforo', 'semaforo');
+      renderFilter('filterRespuesta', 'respuesta');
+      renderFilter('filterBeneficiario', 'beneficiario');
+      document.querySelectorAll('[data-filter]').forEach(cb => cb.addEventListener('change', () => {
+        const key = cb.dataset.filter;
+        cb.checked ? activeFilters[key].add(cb.value) : activeFilters[key].delete(cb.value);
+        applyFilters();
+      }));
+    }
+
+    function applyFilters() {
+      const q = normalizeText(document.getElementById('globalSearch').value);
+      const avance = document.getElementById('avanceFilter').value;
+      const monto = document.getElementById('montoFilter').value;
+      filtered = dataset.filter(d => {
+        for (const [key, set] of Object.entries(activeFilters)) if (set.size && !set.has(String(d[key] ?? ''))) return false;
+        if (q) {
+          const haystack = normalizeText(Object.values(d).join(' '));
+          if (!haystack.includes(q)) return false;
+        }
+        if (avance !== 'all') {
+          const [a,b] = avance.split('-').map(Number); const p = Math.round((Number(d.avance)||0)*100);
+          if (p < a || p > b) return false;
+        }
+        if (monto !== 'all') {
+          const [a,b] = monto.split('-').map(Number); const val = Number(d.valor)||0;
+          if (val < a || val > b) return false;
+        }
+        return true;
+      });
+      updateAll();
+    }
+
+    function activeFilterCount() {
+      return Object.values(activeFilters).reduce((n, set) => n + set.size, 0) +
+        (document.getElementById('globalSearch').value ? 1 : 0) +
+        (document.getElementById('avanceFilter').value !== 'all' ? 1 : 0) +
+        (document.getElementById('montoFilter').value !== 'all' ? 1 : 0);
+    }
+
+    function updateKPIs() {
+      const total = filtered.length;
+      const monto = filtered.reduce((s,d)=>s+(Number(d.valor)||0),0);
+      const avance = total ? filtered.reduce((s,d)=>s+(Number(d.avance)||0),0)/total : 0;
+      const proceso = filtered.filter(d => normalizeText(d.estado).includes('proceso')).length;
+      const criticas = filtered.filter(d => normalizeText(d.semaforo).includes('critico')).length;
+      document.getElementById('kpiTotal').textContent = numFmt.format(total);
+      document.getElementById('kpiMonto').textContent = moneyFmt.format(monto);
+      document.getElementById('kpiAvance').textContent = pct(avance);
+      document.getElementById('kpiProceso').textContent = numFmt.format(proceso);
+      document.getElementById('kpiCriticas').textContent = numFmt.format(criticas);
+      document.getElementById('visibleCounter').textContent = `${total} de ${dataset.length} registros`;
+      document.getElementById('activeFilters').textContent = `${activeFilterCount()} activos`;
+    }
+
+    function renderPriorities() {
+      const order = { 'Crítico': 1, 'Normal': 2, 'Sin iniciar': 3 };
+      const sorted = [...filtered].sort((a,b) => (order[a.semaforo]||9)-(order[b.semaforo]||9) || (Number(b.diasGestion)||0)-(Number(a.diasGestion)||0));
+      document.getElementById('priorityGrid').innerHTML = sorted.map(d => `
+        <article class="priority-card">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+            <h6>${esc(d.programa)} · Donación #${esc(d.nro)}</h6>${semBadge(d.semaforo)}
+          </div>
+
+          <div class="priority-goods">
+            <div class="label"><i class="fa-solid fa-box-open"></i> Bienes / descripción de la donación</div>
+            <div>${esc(d.descripcion || 'Sin descripción registrada')}</div>
+          </div>
+
+          <p class="mb-1"><strong>Beneficiario:</strong> ${esc(d.beneficiario)}</p>
+          <p class="priority-action"><strong>Próxima acción:</strong> ${esc(d.proximaAccion)}</p>
+          <div class="mb-2">${progressHtml(d.avance)}</div>
+          <div class="d-flex flex-wrap gap-2">
+            ${stateBadge(d.estado)}
+            <span class="badge-lightish bg-light text-secondary"><i class="fa-regular fa-clock"></i> ${d.diasGestion ?? 's/d'} días</span>
+          </div>
+        </article>`).join('') || '<div class="text-muted">No existen registros para los filtros aplicados.</div>';
+    }
+
+    function updateTable() {
+      const rows = filtered.map(d => [
+        d.nro,
+        `<strong>${esc(d.programa)}</strong><br><small class="text-muted">${esc(d.descripcion).slice(0,90)}${String(d.descripcion).length>90?'...':''}</small>`,
+        esc(d.beneficiario),
+        moneyFmt.format(Number(d.valor)||0),
+        stateBadge(d.estado),
+        progressHtml(d.avance),
+        esc(d.respuesta || 'Sin dato'),
+        semBadge(d.semaforo),
+        d.diasGestion ?? 's/d',
+        esc(d.responsable),
+        `<div class="btn-group btn-group-sm"><button class="btn btn-outline-fias" onclick="showDetail(${Number(d.nro)})"><i class="fa-solid fa-eye"></i></button>${d.expediente ? `<a class="btn btn-fias" href="${esc(d.expediente)}" target="_blank" rel="noopener" title="Abrir expediente"><i class="fa-solid fa-folder-open"></i></a>` : ''}</div>`
+      ]);
+      if (!table) {
+        table = $('#donacionesTable').DataTable({
+          data: rows,
+          responsive: true,
+          pageLength: 10,
+          lengthMenu: [[5,10,25,-1],[5,10,25,'Todos']],
+          language: {
+            decimal: ',', thousands: '.',
+            emptyTable: 'No hay información disponible',
+            info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+            infoEmpty: 'Mostrando 0 registros',
+            infoFiltered: '(filtrado de _MAX_ registros totales)',
+            lengthMenu: 'Mostrar _MENU_ registros',
+            loadingRecords: 'Cargando...', processing: 'Procesando...',
+            search: 'Buscar:', zeroRecords: 'No se encontraron coincidencias',
+            paginate: { first: 'Primero', last: 'Último', next: 'Siguiente', previous: 'Anterior' }
+          },
+          order: [[7,'asc'], [8,'desc']],
+          columnDefs: [{ targets: [10], orderable: false, searchable: false }]
+        });
+      } else {
+        table.clear(); table.rows.add(rows); table.draw();
+      }
+    }
+
+    function chartOptions(title) {
+      return { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 9 } }, tooltip: { callbacks: { label: ctx => `${ctx.label || ctx.dataset.label}: ${typeof ctx.raw === 'number' ? numFmt.format(ctx.raw) : ctx.raw}` } } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } }, x: { ticks: { maxRotation: 0, autoSkip: false } } } };
+    }
+    function destroyChart(id) { if (charts[id]) { charts[id].destroy(); charts[id] = null; } }
+    function updateCharts() {
+      const estado = countBy(filtered, 'estado');
+      const programa = sumByGroup(filtered, 'programa', 'valor');
+      const semaforo = countBy(filtered, 'semaforo');
+      const avanceLabels = filtered.map(d => `#${d.nro} ${d.programa}`.slice(0,26));
+      const avanceVals = filtered.map(d => Math.round((Number(d.avance)||0)*100));
+
+      destroyChart('estado');
+      charts.estado = new Chart(document.getElementById('chartEstado'), { type: 'doughnut', data: { labels: Object.keys(estado), datasets: [{ data: Object.values(estado), backgroundColor: [palette.green, palette.yellow, palette.gray, palette.blue, palette.orange] }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '62%', plugins: { legend: { position: 'bottom' } } } });
+
+      destroyChart('programa');
+      charts.programa = new Chart(document.getElementById('chartPrograma'), { type: 'bar', data: { labels: Object.keys(programa), datasets: [{ label: 'Monto USD', data: Object.values(programa), backgroundColor: palette.green }] }, options: { ...chartOptions(), plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => moneyFmt.format(c.raw) } } }, scales: { y: { beginAtZero: true, ticks: { callback: v => '$' + numFmt.format(v) } }, x: { ticks: { maxRotation: 30, minRotation: 0 } } } } });
+
+      destroyChart('semaforo');
+      charts.semaforo = new Chart(document.getElementById('chartSemaforo'), { type: 'bar', data: { labels: Object.keys(semaforo), datasets: [{ label: 'Registros', data: Object.values(semaforo), backgroundColor: Object.keys(semaforo).map(k => normalizeText(k).includes('critico') ? palette.red : normalizeText(k).includes('normal') ? palette.green : palette.gray) }] }, options: { ...chartOptions(), plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } } });
+
+      destroyChart('avance');
+      charts.avance = new Chart(document.getElementById('chartAvance'), { type: 'bar', data: { labels: avanceLabels, datasets: [{ label: 'Avance %', data: avanceVals, backgroundColor: palette.lime }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } }, scales: { x: { min: 0, max: 100, ticks: { callback: v => v + '%' } } } } });
+    }
+
+    function showDetail(nro) {
+      const d = dataset.find(x => Number(x.nro) === Number(nro));
+      if (!d) return;
+      document.getElementById('detailTitle').textContent = `Donación #${d.nro} · ${d.programa}`;
+      document.getElementById('detailSubtitle').textContent = d.beneficiario || '';
+      document.getElementById('detailBody').innerHTML = `
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="p-3 rounded-4 bg-light h-100">
+              <div class="detail-label">Estado</div><div class="detail-value">${stateBadge(d.estado)}</div>
+              <div class="detail-label">Semáforo</div><div class="detail-value">${semBadge(d.semaforo)}</div>
+              <div class="detail-label">Valor estimado</div><div class="detail-value fw-bold fs-5">${moneyFmt.format(Number(d.valor)||0)}</div>
+              <div class="detail-label">Avance</div><div class="detail-value">${progressHtml(d.avance)}</div>
+              <div class="detail-label">Días en gestión</div><div class="detail-value">${d.diasGestion ?? 'Sin dato'}</div>
+              <div class="detail-label">Fechas</div><div class="detail-value small">Intención: ${esc(d.fechaIntencion || 'Sin dato')}<br>Acta: ${esc(d.fechaActa || 'Sin dato')}</div>
+              ${d.expediente ? `<a href="${esc(d.expediente)}" target="_blank" rel="noopener" class="btn btn-fias w-100 mt-2"><i class="fa-solid fa-folder-open me-1"></i>Abrir expediente digital</a>` : ''}
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="detail-label">Descripción de bienes</div><div class="detail-value">${esc(d.descripcion)}</div>
+            <div class="detail-label">Próxima acción requerida</div><div class="detail-value fw-semibold">${esc(d.proximaAccion)}</div>
+            <div class="detail-label">Responsable / área</div><div class="detail-value">${esc(d.responsable)}</div>
+            <div class="detail-label">Detalle del trámite</div><div class="detail-value">${esc(d.detalle)}</div>
+            <div class="detail-label">Observaciones / alertas</div><div class="detail-value">${esc(d.observaciones)}</div>
+            <div class="detail-label">Respuesta del beneficiario</div><div class="detail-value">${esc(d.respuesta || 'Sin dato')}</div>
+          </div>
+        </div>`;
+      new bootstrap.Modal(document.getElementById('detailModal')).show();
+    }
+    window.showDetail = showDetail;
+
+    function updateAll() { updateKPIs(); renderPriorities(); updateTable(); updateCharts(); }
+
+    function resetFilters() {
+      activeFilters = { programa: new Set(), estado: new Set(), semaforo: new Set(), respuesta: new Set(), beneficiario: new Set() };
+      document.querySelectorAll('[data-filter]').forEach(cb => cb.checked = false);
+      document.getElementById('globalSearch').value = '';
+      document.getElementById('avanceFilter').value = 'all';
+      document.getElementById('montoFilter').value = 'all';
+      applyFilters();
+    }
+
+    function showToast(text) { document.getElementById('toastText').textContent = text; bootstrap.Toast.getOrCreateInstance(document.getElementById('appToast')).show(); }
+
+    function exportCsv() {
+      const headers = ['Nro','Programa','Beneficiario','Descripcion','Valor','Fecha Intencion','Respuesta','Fecha Acta','Estado','Avance','Proxima Accion','Responsable','Expediente','Detalle','Observaciones','Dias Gestion','Semaforo'];
+      const rows = filtered.map(d => [d.nro,d.programa,d.beneficiario,d.descripcion,d.valor,d.fechaIntencion,d.respuesta,d.fechaActa,d.estado,pct(d.avance),d.proximaAccion,d.responsable,d.expediente,d.detalle,d.observaciones,d.diasGestion,d.semaforo]);
+      const csv = [headers, ...rows].map(row => row.map(v => `"${String(v ?? '').replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'control_donaciones_fias_filtrado.csv'; a.click(); URL.revokeObjectURL(a.href);
+    }
+
+    function excelDateToISO(value) {
+      if (!value) return '';
+      if (typeof value === 'number') { const d = new Date(Date.UTC(1899, 11, 30)); d.setUTCDate(d.getUTCDate() + value); return d.toISOString().slice(0,10); }
+      if (value instanceof Date) return value.toISOString().slice(0,10);
+      return String(value).slice(0,10);
+    }
+    function normalizeKey(value) {
+      return String(value ?? '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+    }
+
+    function getFlexible(row, ...names) {
+      const indexed = {};
+      Object.keys(row || {}).forEach(key => {
+        indexed[normalizeKey(key)] = row[key];
+      });
+      for (const name of names) {
+        const key = normalizeKey(name);
+        if (Object.prototype.hasOwnProperty.call(indexed, key)) return indexed[key];
+      }
+      return '';
+    }
+
+    function toNumber(value) {
+      if (value === null || value === undefined || value === '') return 0;
+      if (typeof value === 'number') return value;
+      const cleaned = String(value).replace(/\$/g, '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+      const n = Number(cleaned);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function normalizeImported(row) {
+      const avanceRaw = getFlexible(row, 'avance', 'Avance %', 'Avance');
+      let avance = 0;
+      if (typeof avanceRaw === 'string' && avanceRaw.includes('%')) {
+        avance = parseFloat(avanceRaw.replace(',', '.')) / 100;
+      } else {
+        avance = Number(avanceRaw || 0);
+        if (avance > 1) avance = avance / 100;
+      }
+
+      const respuestaRaw = getFlexible(row, 'respuesta', 'Respuesta del beneficiario', 'Respuesta');
+      const respuesta = typeof respuestaRaw === 'number' ? excelDateToISO(respuestaRaw) : respuestaRaw;
+
+      const diasRaw = getFlexible(row, 'diasGestion', 'Días en gestión', 'Dias en gestión', 'Días', 'Dias');
+      const diasGestion = diasRaw === null || diasRaw === undefined || diasRaw === '' ? null : Number(diasRaw);
+
+      return {
+        nro: getFlexible(row, 'nro', 'Nro.', 'Nro', 'No', 'Número', 'Numero'),
+        programa: getFlexible(row, 'programa', 'Fondo / Programa / Proyecto', 'Programa', 'Proyecto'),
+        beneficiario: getFlexible(row, 'beneficiario', 'Beneficiario'),
+        descripcion: getFlexible(row, 'descripcion', 'Descripción de bienes a donar', 'Descripcion de bienes a donar', 'Descripcion', 'Descripción'),
+        valor: toNumber(getFlexible(row, 'valor', 'Valor estimado (USD)', 'Valor', 'Monto')),
+        fechaIntencion: excelDateToISO(getFlexible(row, 'fechaIntencion', 'Fecha de intención', 'Fecha intención', 'Fecha intencion')),
+        respuesta: respuesta || '',
+        fechaActa: excelDateToISO(getFlexible(row, 'fechaActa', 'Fecha de acta entrega-recepción', 'Fecha de acta entrega recepcion', 'Fecha de acta', 'Fecha acta')),
+        estado: getFlexible(row, 'estado', 'Estado actual', 'Estado'),
+        avance: Number.isFinite(avance) ? avance : 0,
+        proximaAccion: getFlexible(row, 'proximaAccion', 'Próxima acción requerida', 'Proxima accion requerida', 'Proxima acción', 'Próxima acción'),
+        responsable: getFlexible(row, 'responsable', 'Responsable / área', 'Responsable / area', 'Responsable', 'Área', 'Area'),
+        expediente: getFlexible(row, 'expediente', 'Expediente digital', 'Expediente'),
+        detalle: getFlexible(row, 'detalle', 'Detalle del trámite', 'Detalle del tramite', 'Detalle'),
+        observaciones: getFlexible(row, 'observaciones', 'Observaciones / alertas', 'Observaciones', 'Alertas'),
+        diasGestion: Number.isFinite(diasGestion) ? diasGestion : null,
+        semaforo: getFlexible(row, 'semaforo', 'Semáforo', 'Semaforo')
+      };
+    }
+
+
+    function extractRowsFromWorkbook(wb) {
+      let selected = null;
+
+      for (const name of wb.SheetNames) {
+        const matrix = XLSX.utils.sheet_to_json(wb.Sheets[name], {
+          header: 1,
+          raw: true,
+          defval: null
+        });
+
+        const idx = matrix.findIndex(r =>
+          Array.isArray(r) && (
+            r.some(c => String(c || '').trim().toLowerCase() === 'nro.') ||
+            r.some(c => normalizeText(c) === 'nro')
+          )
+        );
+
+        if (idx >= 0) {
+          selected = { name, matrix, idx };
+          break;
+        }
+      }
+
+      if (!selected) {
+        throw new Error('No se encontró una fila de encabezados con Nro.');
+      }
+
+      const headers = selected.matrix[selected.idx].map(h => String(h || '').trim());
+
+      const rows = selected.matrix
+        .slice(selected.idx + 1)
+        .filter(r => Array.isArray(r) && r.some(Boolean))
+        .filter(r => r[0] !== null && String(r[0]).toLowerCase() !== 'total general')
+        .map(r => {
+          const obj = {};
+          headers.forEach((h, i) => obj[h] = r[i]);
+          return normalizeImported(obj);
+        })
+        .filter(d => d.nro);
+
+      if (!rows.length) {
+        throw new Error('No se encontraron registros válidos en el Excel.');
+      }
+
+      return rows;
+    }
+
+    function setDataSource(rows, label) {
+      dataset = rows;
+      filtered = [...dataset];
+      activeFilters = {
+        programa: new Set(),
+        estado: new Set(),
+        semaforo: new Set(),
+        respuesta: new Set(),
+        beneficiario: new Set()
+      };
+      document.querySelectorAll('[data-filter]').forEach(cb => cb.checked = false);
+      document.getElementById('globalSearch').value = '';
+      document.getElementById('avanceFilter').value = 'all';
+      document.getElementById('montoFilter').value = 'all';
+      buildFilters();
+      updateAll();
+      const sourceLabel = document.getElementById('sourceLabel');
+      if (sourceLabel) sourceLabel.textContent = label;
+    }
+
+    async function loadDataFromJson() {
+      try {
+        const sourceLabel = document.getElementById('sourceLabel');
+        if (sourceLabel) sourceLabel.textContent = 'Fuente: cargando JSON local...';
+        showToast('Cargando información publicada en GitHub...');
+
+        const response = await fetch(`${DATA_URL}?v=${Date.now()}`, {
+          method: 'GET',
+          cache: 'no-store'
+        });
+
+        if (!response.ok) {
+          throw new Error(`No se pudo cargar el JSON local. Estado HTTP: ${response.status}`);
+        }
+
+        const payload = await response.json();
+        const rawRows = Array.isArray(payload) ? payload : (Array.isArray(payload.data) ? payload.data : []);
+        if (!rawRows.length) {
+          throw new Error('El archivo JSON no contiene registros válidos. Revise data/control-donaciones.json.');
+        }
+
+        const rows = rawRows.map(normalizeImported).filter(d => d.nro);
+        if (!rows.length) {
+          throw new Error('El JSON fue leído, pero no se encontraron registros con Nro.');
+        }
+
+        setDataSource(rows, `Fuente: JSON GitHub Pages · ${rows.length} registros`);
+        showToast(`Datos cargados desde JSON local: ${rows.length} registros.`);
+      } catch (error) {
+        console.error('Error al cargar JSON local:', {
+          url: DATA_URL,
+          origen: window.location.origin,
+          mensaje: error.message || String(error),
+          error
+        });
+
+        setDataSource([], 'Fuente no cargada: falta data/control-donaciones.json o tiene estructura inválida');
+        showToast(error.message || 'No se pudo cargar el JSON local. No existen datos hardcodeados de respaldo.');
+      }
+    }
+
+    function loadExcel(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+          const rows = extractRowsFromWorkbook(wb);
+          setDataSource(rows, `Fuente: Excel manual · ${file.name}`);
+          showToast(`Excel cargado correctamente: ${rows.length} registros.`);
+        } catch (error) {
+          console.error('Error al cargar Excel manual:', error);
+          showToast(error.message || 'No se pudo leer el Excel seleccionado.');
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('globalSearch').addEventListener('input', applyFilters);
+      document.getElementById('avanceFilter').addEventListener('change', applyFilters);
+      document.getElementById('montoFilter').addEventListener('change', applyFilters);
+      document.getElementById('btnReset').addEventListener('click', resetFilters);
+      document.getElementById('btnCriticos').addEventListener('click', () => { resetFilters(); activeFilters.semaforo.add('Crítico'); document.querySelectorAll('[data-filter="semaforo"]').forEach(cb => cb.checked = cb.value === 'Crítico'); applyFilters(); });
+      document.getElementById('btnExportCsv').addEventListener('click', exportCsv);
+      document.getElementById('btnLoadExcel').addEventListener('click', () => document.getElementById('excelInput').click());
+      document.getElementById('excelInput').addEventListener('change', e => e.target.files[0] && loadExcel(e.target.files[0]));
+      document.getElementById('openFilters').addEventListener('click', () => document.getElementById('sidebar').classList.add('show'));
+      document.addEventListener('click', (e) => { if (window.innerWidth <= 992 && !document.getElementById('sidebar').contains(e.target) && !document.getElementById('openFilters').contains(e.target)) document.getElementById('sidebar').classList.remove('show'); });
+      loadDataFromJson();
+    });
+  </script>
+</body>
+</html>
