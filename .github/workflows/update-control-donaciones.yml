@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: actualizar-control-donaciones
+  cancel-in-progress: false
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
@@ -15,6 +19,8 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Configurar Node.js 24
         uses: actions/setup-node@v5
@@ -69,5 +75,10 @@ jobs:
             echo "No hay cambios en los datos."
           else
             git commit -m "Actualizar datos de donaciones"
-            git push
+
+            echo "Sincronizando con la rama remota antes del push..."
+            git pull --rebase origin main
+
+            echo "Enviando cambios a GitHub..."
+            git push origin main
           fi
