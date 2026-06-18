@@ -14,18 +14,44 @@ jobs:
 
     steps:
       - name: Descargar repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
+      - name: Configurar Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
+
+      - name: Mostrar versión de Node y npm
+        run: |
+          node --version
+          npm --version
 
       - name: Instalar dependencias
         run: npm install
 
+      - name: Verificar estructura de archivos
+        run: |
+          echo "Contenido raíz:"
+          ls -la
+          echo "Contenido scripts:"
+          ls -la scripts || true
+          echo "Contenido data:"
+          ls -la data || true
+          echo "package.json:"
+          cat package.json
+
       - name: Generar JSON desde Excel público
         run: npm run build:data
+
+      - name: Verificar JSON generado
+        run: |
+          echo "Contenido data después de generar:"
+          ls -la data
+          echo "Primeras líneas del JSON:"
+          head -c 500 data/control-donaciones.json || true
+          echo ""
+          echo "Metadata:"
+          cat data/control-donaciones-meta.json || true
 
       - name: Publicar cambios si existen
         run: |
