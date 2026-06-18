@@ -1,6 +1,29 @@
 {
-  "fuente": "OneDrive FIAS Excel público",
-  "registros": 6,
-  "generado": "2026-06-17",
-  "nota": "Archivo inicial generado desde el Excel cargado en la conversación. En producción se actualiza con GitHub Actions."
+  "generatedAt": "2026-06-18T14:56:57.180Z",
+  "records": 6,
+  "sheetName": "Control",
+  "headerRowIndex": 2,
+  "headers": [
+    "Nro.",
+    "Fondo / Programa / Proyecto",
+    "Beneficiario",
+    "Descripción de bienes a donar",
+    "Valor estimado (USD)",
+    "Fecha de intención",
+    "Respuesta del beneficiario",
+    "Fecha de acta entrega-recepción",
+    "Estado actual",
+    "Avance %",
+    "Próxima acción requerida",
+    "Responsable / área",
+    "Expediente digital",
+    "Detalle del trámite",
+    "Observaciones / alertas",
+    "Días en gestión",
+    "Semáforo"
+  ],
+  "sourceName": "SharePoint download.aspx con share id",
+  "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "bytes": 33999
 }
