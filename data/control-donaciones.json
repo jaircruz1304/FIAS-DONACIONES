@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 455,
+    "diasGestion": 462,
     "semaforo": "Crítico"
   },
   {
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 104,
+    "diasGestion": 111,
     "semaforo": "Crítico"
   },
   {
@@ -53,7 +53,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Expediente entregado en ventanilla el 25/02/2026, dirigido a la Coordinación Administrativa Financiera del MAE. Se entregó oficio, acta de transferencia borrador, matriz de inventario y facturas de las adquisiciones.",
     "observaciones": "Las verificaciones se realizaron desde febrero de 2026 hasta el 21/04/2026. Punto de contacto: Diego Medrano, especialista administrativo.",
-    "diasGestion": 113,
+    "diasGestion": 120,
     "semaforo": "Crítico"
   },
   {
@@ -84,15 +84,15 @@
     "fechaIntencion": "2026-05-14",
     "respuesta": "Thu Jun 04 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
     "fechaActa": "",
-    "estado": "En proceso",
-    "avance": 0.8,
-    "proximaAccion": "Firmar el acta entrega recepción de los bienes a donar",
-    "responsable": "Jurídico UTPL / FIAS",
+    "estado": "Finalizado",
+    "avance": 1,
+    "proximaAccion": "Ninguna",
+    "responsable": "Administrativa FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
-    "detalle": "Pendiente la firma del acta entrega para culminar la donación",
-    "observaciones": "Sin alertas, tramite en proceso normal",
-    "diasGestion": 35,
-    "semaforo": "Normal"
+    "detalle": "Completo",
+    "observaciones": "Completo",
+    "diasGestion": 42,
+    "semaforo": "Finalizado"
   },
   {
     "nro": 6,
