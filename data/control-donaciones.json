@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 462,
+    "diasGestion": 475,
     "semaforo": "Crítico"
   },
   {
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 111,
+    "diasGestion": 124,
     "semaforo": "Crítico"
   },
   {
@@ -44,16 +44,16 @@
     "descripcion": "Equipo informático (Socio Bosque); equipo de protección (Control Forestal); herramientas (PASF); sillas (Dirección de Bosques).",
     "valor": 290503.07,
     "fechaIntencion": "2026-02-25",
-    "respuesta": "Pendiente",
+    "respuesta": "Aceptado",
     "fechaActa": "",
     "estado": "En proceso",
-    "avance": 0.5,
-    "proximaAccion": "Solicitar confirmación del informe de necesidad y definición de fecha para el acta de transferencia.",
-    "responsable": "Administrativo Financiero MAE / FIAS",
+    "avance": 0.75,
+    "proximaAccion": "Firma del acta entrga recepción",
+    "responsable": "Administrativo Financiero MAE / Dirección Ejecutiva FIAS-Coordinadro Rendimientos",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Expediente entregado en ventanilla el 25/02/2026, dirigido a la Coordinación Administrativa Financiera del MAE. Se entregó oficio, acta de transferencia borrador, matriz de inventario y facturas de las adquisiciones.",
     "observaciones": "Las verificaciones se realizaron desde febrero de 2026 hasta el 21/04/2026. Punto de contacto: Diego Medrano, especialista administrativo.",
-    "diasGestion": 120,
+    "diasGestion": 133,
     "semaforo": "Crítico"
   },
   {
@@ -63,9 +63,9 @@
     "descripcion": "Equipo informático: cinco computadoras.",
     "valor": 7296.35,
     "fechaIntencion": "",
-    "respuesta": "Pendiente",
+    "respuesta": "Sin respuesta",
     "fechaActa": "",
-    "estado": "Sin iniciar",
+    "estado": "Iniciado",
     "avance": 0.2,
     "proximaAccion": "Finalizar oficio de intención de donación, acta borrador y matriz de bienes.",
     "responsable": "Jurídico FIAS",
@@ -91,7 +91,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 42,
+    "diasGestion": 55,
     "semaforo": "Finalizado"
   },
   {
@@ -105,7 +105,7 @@
     "fechaActa": "",
     "estado": "Sin iniciar",
     "avance": 0,
-    "proximaAccion": "Coordinar con la Dirección de Bosques las reformas presupuestarias y ejecutar mantenimientos, matrículas y revisiones previas a la donación.",
+    "proximaAccion": "Coordinar con la Dirección de Bosques la solciitud de fondo para matricuals y gasto notariales",
     "responsable": "Dirección de Bosques / Administrativo FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBpHDyvlhV_RJpjSbqSOuWcAWOJXdm91ElCHQX3JFb8VLU?e=oTqPeP",
     "detalle": "Pendiente gestión de la Dirección de Bosques para reformas presupuestarias.",
