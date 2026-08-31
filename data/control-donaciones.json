@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 516,
+    "diasGestion": 529,
     "semaforo": "Crítico"
   },
   {
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 165,
+    "diasGestion": 178,
     "semaforo": "Crítico"
   },
   {
@@ -53,7 +53,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 174,
+    "diasGestion": 187,
     "semaforo": "Finalizado"
   },
   {
@@ -62,18 +62,18 @@
     "beneficiario": "Ministerio de Ambiente y Energía (MAE)",
     "descripcion": "Equipo informático: cinco computadoras.",
     "valor": 7296.35,
-    "fechaIntencion": "",
+    "fechaIntencion": "2026-07-09",
     "respuesta": "Sin respuesta",
     "fechaActa": "",
     "estado": "Iniciado",
     "avance": 0.2,
-    "proximaAccion": "Finalizar oficio de intención de donación, acta borrador y matriz de bienes.",
-    "responsable": "Jurídico FIAS",
+    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE",
+    "responsable": "Administrativo Financiero MAE / FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAjAUmzFTKCTJ7zlYECjVatAWrZIHaKD3pZzdRU_iveZZM?e=LZlhJn",
-    "detalle": "En elaboración de intención de donación, acta borrador y matriz de bienes.",
-    "observaciones": "A cargo del área jurídica de FIAS.",
-    "diasGestion": null,
-    "semaforo": "Sin iniciar"
+    "detalle": "",
+    "observaciones": "",
+    "diasGestion": 53,
+    "semaforo": "Atención"
   },
   {
     "nro": 5,
@@ -91,7 +91,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 96,
+    "diasGestion": 109,
     "semaforo": "Finalizado"
   },
   {
@@ -105,12 +105,31 @@
     "fechaActa": "",
     "estado": "Sin iniciar",
     "avance": 0,
-    "proximaAccion": "En gestion para matriculación vehicular del Suzuki Gran Vitara SZ",
+    "proximaAccion": "En gestion para matriculación vehicular del Suzuki Gran Vitara SZ, y camionetas",
     "responsable": "Administrativo FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBpHDyvlhV_RJpjSbqSOuWcAWOJXdm91ElCHQX3JFb8VLU?e=oTqPeP",
-    "detalle": "A espera del certificado del SRI y de la ANT(CUV) apriximadamente el 22 de agosto del 2026",
+    "detalle": "Traspaso de domino agendado para el 10 de septiembre del 2026",
     "observaciones": "Se deben realizar mantenimientos vehiculares, matrículas y revisiones de los tres vehículos antes de la donación.",
     "diasGestion": null,
     "semaforo": "Sin iniciar"
+  },
+  {
+    "nro": 7,
+    "programa": "Rendimiento REM",
+    "beneficiario": "Ministerio de Ambiente y Energía (MAE)",
+    "descripcion": "Equipo informático; Drones, Banners, Material didactico",
+    "valor": 174435.86,
+    "fechaIntencion": "2026-08-31",
+    "respuesta": "Sin respuesta",
+    "fechaActa": "",
+    "estado": "Iniciado",
+    "avance": 0.1,
+    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE",
+    "responsable": "Administrativo Financiero MAE / FIAS",
+    "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAk7bqePBIbS555cXUkno5aAfrlf7SYWPUJE7udGftJXnE?e=VIzxsM",
+    "detalle": "",
+    "observaciones": "",
+    "diasGestion": null,
+    "semaforo": "Normal"
   }
 ]

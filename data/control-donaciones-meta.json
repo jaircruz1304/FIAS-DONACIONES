@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-31T18:14:51.081Z",
-  "records": 6,
+  "generatedAt": "2026-08-31T21:34:48.265Z",
+  "records": 7,
   "sheetName": "Control",
   "headerRowIndex": 2,
   "headers": [
@@ -25,5 +25,5 @@
   "sourceName": "SharePoint download.aspx con share id",
   "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo",
   "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "bytes": 33876
+  "bytes": 33929
 }
