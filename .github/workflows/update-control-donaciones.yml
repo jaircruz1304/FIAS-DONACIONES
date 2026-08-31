@@ -3,7 +3,7 @@ name: Actualizar control de donaciones
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '*/30 * * * *'
 
 permissions:
   contents: write
@@ -53,7 +53,23 @@ jobs:
       - name: Generar JSON desde Excel público
         run: npm run build:data
 
-      - name: Verificar JSON generado
+      - name: Verificar integridad de datos generados
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const rows = JSON.parse(fs.readFileSync('data/control-donaciones.json', 'utf8'));
+          const meta = JSON.parse(fs.readFileSync('data/control-donaciones-meta.json', 'utf8'));
+          if (!Array.isArray(rows) || rows.length === 0) throw new Error('El JSON no contiene registros.');
+          if (Number(meta.records) !== rows.length) throw new Error(`Inconsistencia: JSON=${rows.length}, metadata=${meta.records}`);
+          const missing = rows.filter(r => r.nro === null || r.nro === undefined || String(r.nro).trim() === '');
+          if (missing.length) throw new Error(`Existen ${missing.length} registros sin Nro.`);
+          const ids = rows.map(r => String(r.nro));
+          const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+          if (duplicates.length) throw new Error(`Nro. duplicados: ${[...new Set(duplicates)].join(', ')}`);
+          console.log(`Integridad OK: ${rows.length} registros.`);
+          NODE
+
+      - name: Mostrar diagnóstico de publicación
         run: |
           echo "=== Contenido carpeta data después de generar ==="
           ls -la data

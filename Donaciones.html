@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard de Control de Donaciones FIAS</title>
+  <title>FIAS | Control Ejecutivo de Donaciones</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -307,6 +307,180 @@
       body { background: #fff; }
       .panel, .kpi, .hero { box-shadow: none; break-inside: avoid; }
     }
+
+
+    /* =========================================================
+       FIAS Enterprise UI 2.0 — capa visual corporativa
+       ========================================================= */
+    :root {
+      --fias-green: #176b3a;
+      --fias-green-dark: #0d4f2d;
+      --fias-green-deep: #083b22;
+      --fias-green-soft: #eef7f1;
+      --fias-lime: #6fae45;
+      --fias-yellow: #d6a11f;
+      --fias-orange: #c96f24;
+      --fias-red: #c43d3d;
+      --ink: #17232d;
+      --muted: #647180;
+      --bg: #f3f6f4;
+      --card: #ffffff;
+      --line: #dfe7e2;
+      --shadow: 0 8px 24px rgba(16, 50, 34, .07);
+      --radius: 14px;
+    }
+    body {
+      background: #f3f6f4;
+      color: var(--ink);
+    }
+    .sidebar {
+      width: 286px;
+      background: linear-gradient(180deg, #0d4f2d 0%, #083b22 100%);
+      border-right: 0;
+      box-shadow: 8px 0 28px rgba(8, 59, 34, .13);
+    }
+    .sidebar-logo {
+      background: rgba(255,255,255,.98);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      padding: 1.1rem 1.15rem;
+    }
+    .brand-box { justify-content: center; }
+    .brand-box img { max-width: 168px; max-height: 56px; }
+    .side-content { padding: .9rem; }
+    .filter-card {
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 12px;
+      padding: .85rem;
+      box-shadow: none;
+      color: #fff;
+    }
+    .filter-title { color: #fff; font-size: .82rem; letter-spacing: .02em; }
+    .filter-option { color: rgba(255,255,255,.84); font-size: .82rem; }
+    .filter-option:hover { background: rgba(255,255,255,.08); }
+    .filter-option small { color: rgba(255,255,255,.52) !important; }
+    .filter-chip {
+      background: rgba(255,255,255,.11);
+      border-color: rgba(255,255,255,.13);
+      color: #fff;
+    }
+    .filter-option input { accent-color: #8fcf64; }
+    .sidebar .btn-fias {
+      background: #fff;
+      color: var(--fias-green-dark);
+      border-color: #fff;
+    }
+    .sidebar .btn-outline-fias {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,.28);
+    }
+    .sidebar .btn-outline-fias:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .sidebar-footer {
+      background: rgba(0,0,0,.12);
+      color: rgba(255,255,255,.65);
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .sidebar-footer a { color: #fff; }
+
+    .topbar {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(16, 50, 34, .035);
+    }
+    .topbar-inner { min-height: 68px; padding: .75rem 1.35rem; }
+    .topbar-title { font-size: .95rem; letter-spacing: -.01em; }
+    .source-pill {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .38rem .7rem; border-radius: 999px;
+      background: #f3f7f4; border: 1px solid var(--line);
+      color: #53616d; font-size: .75rem; font-weight: 650;
+      max-width: 360px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: #7c8995; box-shadow: 0 0 0 3px rgba(124,137,149,.12); }
+    .sync-dot.ok { background: #2d8a4e; box-shadow: 0 0 0 3px rgba(45,138,78,.12); }
+    .sync-dot.warn { background: #d49a21; box-shadow: 0 0 0 3px rgba(212,154,33,.14); }
+    .sync-dot.error { background: #c43d3d; box-shadow: 0 0 0 3px rgba(196,61,61,.12); }
+
+    .hero {
+      margin: 1.25rem 1.35rem .85rem;
+      background: linear-gradient(118deg, #0d4f2d 0%, #176b3a 70%, #276f43 100%);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(13,79,45,.15);
+    }
+    .hero::after { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 100%); }
+    .hero-content { padding: 1.45rem 1.7rem; }
+    .hero h1 { font-size: clamp(1.65rem, 3vw, 2.45rem); font-weight: 780; letter-spacing: -.025em; }
+    .hero p { max-width: 910px; margin-bottom: 0; font-size: .94rem; }
+    .eyebrow { border-radius: 8px; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; }
+
+    .content-wrap { padding: 0 1.35rem 2rem; }
+    .data-health {
+      display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: .8rem;
+      margin: .95rem 0 .4rem;
+    }
+    .health-item {
+      display: flex; align-items: center; gap: .75rem;
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: .78rem .9rem; min-height: 66px;
+    }
+    .health-icon {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      background: var(--fias-green-soft); color: var(--fias-green-dark); flex: 0 0 auto;
+    }
+    .health-label { color: var(--muted); text-transform: uppercase; font-weight: 750; font-size: .68rem; letter-spacing: .055em; }
+    .health-value { font-weight: 760; font-size: .86rem; color: var(--ink); margin-top: .08rem; }
+
+    .kpi-grid { grid-template-columns: repeat(6, minmax(145px, 1fr)); gap: .78rem; }
+    .kpi {
+      border-radius: 13px; padding: .95rem; min-height: 118px;
+      box-shadow: var(--shadow); border-color: var(--line);
+    }
+    .kpi::before { width: 5px; height: 100%; top: 0; right: auto; left: 0; border-radius: 0; background: var(--fias-green); }
+    .kpi .icon { width: 36px; height: 36px; border-radius: 10px; margin-bottom: .62rem; }
+    .kpi small { font-size: .67rem; letter-spacing: .055em; }
+    .kpi strong { font-size: clamp(1.2rem, 2vw, 1.62rem); }
+
+    .panel { border-radius: 14px; box-shadow: var(--shadow); border-color: var(--line); }
+    .panel-header { padding: .9rem 1rem; background: #fff; }
+    .panel-title { color: #173d2a; font-size: .98rem; font-weight: 760; }
+    .panel-title i { color: var(--fias-green); }
+    .panel-body { padding: .95rem 1rem; }
+    .chart-box { min-height: 290px; }
+    .priority-grid { gap: .72rem; }
+    .priority-card { border-radius: 12px; padding: .85rem; box-shadow: none; }
+    .priority-card:hover { transform: none; border-color: rgba(23,107,58,.3); box-shadow: 0 7px 18px rgba(16,50,34,.07); }
+    .priority-goods { border-radius: 10px; background: #f6faf7; }
+
+    .toolbar .form-control, .toolbar .form-select { min-height: 40px; font-size: .85rem; }
+    .search-box input { border-radius: 9px; }
+    .form-select { border-radius: 9px; }
+    .btn { border-radius: 8px; }
+    .btn-fias { background: var(--fias-green); border-color: var(--fias-green); }
+    .btn-fias:hover { background: var(--fias-green-dark); border-color: var(--fias-green-dark); }
+    .btn-outline-fias { border-color: #b9cbbf; color: var(--fias-green-dark); }
+
+    table.dataTable thead th {
+      background: #edf4ef !important; color: #214332; font-size: .69rem;
+      border-bottom: 1px solid #d5e2da !important;
+    }
+    table.dataTable tbody td { font-size: .84rem; border-color: #edf1ee; }
+    #donacionesTable tbody tr:hover { background: #f7faf8; }
+    .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_paginate { font-size: .8rem; color: var(--muted); }
+
+    .modal-content { border-radius: 14px !important; }
+    .modal-header { background: #0d4f2d !important; }
+
+    @media (max-width: 1380px) { .kpi-grid { grid-template-columns: repeat(3, minmax(145px,1fr)); } }
+    @media (max-width: 992px) {
+      .data-health { grid-template-columns: 1fr; }
+      .hero { margin: 1rem; }
+      .content-wrap { padding: 0 1rem 1.5rem; }
+    }
+    @media (max-width: 576px) { .kpi-grid { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -351,9 +525,10 @@
             </div>
           </div>
           <div class="d-flex align-items-center gap-2 flex-wrap justify-content-end">
-            <small id="sourceLabel" class="text-muted d-none d-xl-inline">Fuente: cargando datos JSON local...</small>
+            <span class="source-pill d-none d-xl-inline-flex" title="Estado de la fuente de datos"><span id="syncDot" class="sync-dot"></span><span id="sourceLabel">Fuente: cargando datos...</span></span>
             <input type="file" id="excelInput" class="d-none" accept=".xlsx,.xls,.csv">
-            <button class="btn btn-outline-fias btn-sm" id="btnLoadExcel"><i class="fa-solid fa-file-excel me-1"></i> Cargar Excel manual</button>
+            <button class="btn btn-outline-fias btn-sm" id="btnRefreshData" title="Volver a consultar el JSON publicado"><i class="fa-solid fa-arrows-rotate me-1"></i> Actualizar vista</button>
+            <button class="btn btn-outline-fias btn-sm" id="btnLoadExcel"><i class="fa-solid fa-file-excel me-1"></i> Cargar Excel</button>
             <button class="btn btn-outline-fias btn-sm" id="btnExportCsv"><i class="fa-solid fa-download me-1"></i> Exportar CSV</button>
             <button class="btn btn-fias btn-sm" onclick="window.print()"><i class="fa-solid fa-print me-1"></i> Imprimir</button>
           </div>
@@ -374,12 +549,19 @@
       </section>
 
       <div class="content-wrap">
+        <section class="data-health" aria-label="Estado de actualización de datos">
+          <div class="health-item"><div class="health-icon"><i class="fa-solid fa-database"></i></div><div><div class="health-label">Fuente publicada</div><div class="health-value" id="healthSource">JSON GitHub Pages</div></div></div>
+          <div class="health-item"><div class="health-icon"><i class="fa-regular fa-clock"></i></div><div><div class="health-label">Última sincronización</div><div class="health-value" id="lastSync">Consultando...</div></div></div>
+          <div class="health-item"><div class="health-icon"><i class="fa-solid fa-shield-check"></i></div><div><div class="health-label">Integridad de datos</div><div class="health-value" id="dataIntegrity">Validando registros...</div></div></div>
+        </section>
+
         <section class="kpi-grid" aria-label="Indicadores principales">
           <div class="kpi"><div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div><small>Donaciones</small><strong id="kpiTotal">0</strong><span class="text-muted small">registros visualizados</span></div>
           <div class="kpi"><div class="icon"><i class="fa-solid fa-dollar-sign"></i></div><small>Monto estimado</small><strong id="kpiMonto">$0</strong><span class="text-muted small">USD consolidado</span></div>
           <div class="kpi"><div class="icon"><i class="fa-solid fa-chart-line"></i></div><small>Avance promedio</small><strong id="kpiAvance">0%</strong><span class="text-muted small">sobre registros filtrados</span></div>
           <div class="kpi"><div class="icon"><i class="fa-solid fa-spinner"></i></div><small>En proceso</small><strong id="kpiProceso">0</strong><span class="text-muted small">donaciones activas</span></div>
           <div class="kpi"><div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div><small>Alertas críticas</small><strong id="kpiCriticas">0</strong><span class="text-muted small">requieren atención</span></div>
+          <div class="kpi"><div class="icon"><i class="fa-solid fa-circle-check"></i></div><small>Finalizadas</small><strong id="kpiFinalizadas">0</strong><span class="text-muted small">procesos concluidos</span></div>
         </section>
 
         <section class="panel">
@@ -463,6 +645,9 @@
     // No existen registros de donaciones embebidos en este HTML.
     // El archivo JSON debe ubicarse en /data/control-donaciones.json dentro del mismo repositorio de GitHub Pages.
     const DATA_URL = './data/control-donaciones.json';
+    const META_URL = './data/control-donaciones-meta.json';
+    const AUTO_REFRESH_MS = 5 * 60 * 1000;
+    const STALE_AFTER_MS = 75 * 60 * 1000;
 
     const logoFallback = 'https://raw.githubusercontent.com/jaircruz1304/FIAS/main/Logo_FIAS.png';
     let dataset = [];
@@ -470,6 +655,8 @@
     let table = null;
     let charts = {};
     let activeFilters = { programa: new Set(), estado: new Set(), semaforo: new Set(), respuesta: new Set(), beneficiario: new Set() };
+    let lastDataSignature = '';
+    let lastMeta = null;
 
     const moneyFmt = new Intl.NumberFormat('es-EC', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
     const numFmt = new Intl.NumberFormat('es-EC');
@@ -504,7 +691,7 @@
       const el = document.getElementById(containerId);
       el.innerHTML = uniqueValues(labelKey).map((value, idx) => `
         <label class="filter-option">
-          <input type="checkbox" data-filter="${key}" value="${esc(value)}" id="${key}-${idx}">
+          <input type="checkbox" data-filter="${key}" value="${esc(value)}" id="${key}-${idx}" ${activeFilters[key]?.has(String(value)) ? 'checked' : ''}>
           <span>${esc(value)} <small class="text-muted">(${dataset.filter(d => d[labelKey] === value).length})</small></span>
         </label>`).join('') || '<small class="text-muted">Sin opciones disponibles</small>';
     }
@@ -558,18 +745,20 @@
       const avance = total ? filtered.reduce((s,d)=>s+(Number(d.avance)||0),0)/total : 0;
       const proceso = filtered.filter(d => normalizeText(d.estado).includes('proceso')).length;
       const criticas = filtered.filter(d => normalizeText(d.semaforo).includes('critico')).length;
+      const finalizadas = filtered.filter(d => normalizeText(d.estado).includes('finalizado')).length;
       document.getElementById('kpiTotal').textContent = numFmt.format(total);
       document.getElementById('kpiMonto').textContent = moneyFmt.format(monto);
       document.getElementById('kpiAvance').textContent = pct(avance);
       document.getElementById('kpiProceso').textContent = numFmt.format(proceso);
       document.getElementById('kpiCriticas').textContent = numFmt.format(criticas);
+      document.getElementById('kpiFinalizadas').textContent = numFmt.format(finalizadas);
       document.getElementById('visibleCounter').textContent = `${total} de ${dataset.length} registros`;
       document.getElementById('activeFilters').textContent = `${activeFilterCount()} activos`;
     }
 
     function renderPriorities() {
       const order = { 'Crítico': 1, 'Normal': 2, 'Sin iniciar': 3 };
-      const sorted = [...filtered].sort((a,b) => (order[a.semaforo]||9)-(order[b.semaforo]||9) || (Number(b.diasGestion)||0)-(Number(a.diasGestion)||0));
+      const sorted = filtered.filter(d => !normalizeText(d.estado).includes('finalizado')).sort((a,b) => (order[a.semaforo]||9)-(order[b.semaforo]||9) || (Number(b.diasGestion)||0)-(Number(a.diasGestion)||0)).slice(0, 9);
       document.getElementById('priorityGrid').innerHTML = sorted.map(d => `
         <article class="priority-card">
           <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
@@ -622,7 +811,7 @@
             search: 'Buscar:', zeroRecords: 'No se encontraron coincidencias',
             paginate: { first: 'Primero', last: 'Último', next: 'Siguiente', previous: 'Anterior' }
           },
-          order: [[7,'asc'], [8,'desc']],
+          order: [[0,'desc']],
           columnDefs: [{ targets: [10], orderable: false, searchable: false }]
         });
       } else {
@@ -825,64 +1014,133 @@
       return rows;
     }
 
-    function setDataSource(rows, label) {
-      dataset = rows;
-      filtered = [...dataset];
-      activeFilters = {
-        programa: new Set(),
-        estado: new Set(),
-        semaforo: new Set(),
-        respuesta: new Set(),
-        beneficiario: new Set()
-      };
-      document.querySelectorAll('[data-filter]').forEach(cb => cb.checked = false);
-      document.getElementById('globalSearch').value = '';
-      document.getElementById('avanceFilter').value = 'all';
-      document.getElementById('montoFilter').value = 'all';
-      buildFilters();
-      updateAll();
-      const sourceLabel = document.getElementById('sourceLabel');
-      if (sourceLabel) sourceLabel.textContent = label;
+    function setSyncStatus(kind, text) {
+      const dot = document.getElementById('syncDot');
+      if (dot) dot.className = `sync-dot ${kind || ''}`.trim();
+      const label = document.getElementById('sourceLabel');
+      if (label && text) label.textContent = text;
     }
 
-    async function loadDataFromJson() {
+    function formatDateTime(value) {
+      if (!value) return 'No disponible';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value);
+      return new Intl.DateTimeFormat('es-EC', {
+        dateStyle: 'medium', timeStyle: 'short', timeZone: 'America/Guayaquil'
+      }).format(d);
+    }
+
+    function updateDataHealth(meta, rowCount, integrityMessage = '') {
+      lastMeta = meta || lastMeta;
+      const source = document.getElementById('healthSource');
+      const sync = document.getElementById('lastSync');
+      const integrity = document.getElementById('dataIntegrity');
+
+      if (source) source.textContent = meta?.sheetName ? `Excel · hoja ${meta.sheetName} → JSON` : 'JSON GitHub Pages';
+      if (sync) sync.textContent = meta?.generatedAt ? formatDateTime(meta.generatedAt) : 'Metadata no disponible';
+
+      const declared = Number(meta?.records);
+      const consistent = !Number.isFinite(declared) || declared === rowCount;
+      if (integrity) integrity.textContent = integrityMessage || (consistent ? `${rowCount} registros validados` : `Alerta: JSON ${rowCount} / metadata ${declared}`);
+
+      if (meta?.generatedAt) {
+        const age = Date.now() - new Date(meta.generatedAt).getTime();
+        if (age > STALE_AFTER_MS) {
+          setSyncStatus('warn', `Datos publicados con antigüedad de ${Math.floor(age / 60000)} min`);
+        } else if (consistent) {
+          setSyncStatus('ok', `Sincronizado · ${rowCount} registros · ${formatDateTime(meta.generatedAt)}`);
+        } else {
+          setSyncStatus('warn', `Revisar integridad · ${rowCount} registros`);
+        }
+      } else {
+        setSyncStatus(consistent ? 'ok' : 'warn', `JSON cargado · ${rowCount} registros`);
+      }
+    }
+
+    function setDataSource(rows, label, options = {}) {
+      const { resetFilters = true, meta = null, integrityMessage = '' } = options;
+      dataset = rows;
+
+      if (resetFilters) {
+        activeFilters = {
+          programa: new Set(), estado: new Set(), semaforo: new Set(), respuesta: new Set(), beneficiario: new Set()
+        };
+        document.getElementById('globalSearch').value = '';
+        document.getElementById('avanceFilter').value = 'all';
+        document.getElementById('montoFilter').value = 'all';
+      } else {
+        // Elimina filtros que ya no existan, preservando la navegación del usuario.
+        Object.keys(activeFilters).forEach(key => {
+          const valid = new Set(dataset.map(d => String(d[key] ?? '')));
+          activeFilters[key] = new Set([...activeFilters[key]].filter(v => valid.has(String(v))));
+        });
+      }
+
+      filtered = [...dataset];
+      buildFilters();
+      applyFilters();
+      if (label) setSyncStatus('ok', label);
+      updateDataHealth(meta, rows.length, integrityMessage);
+    }
+
+    async function loadDataFromJson(options = {}) {
+      const { silent = false, resetFilters = false } = options;
       try {
-        const sourceLabel = document.getElementById('sourceLabel');
-        if (sourceLabel) sourceLabel.textContent = 'Fuente: cargando JSON local...';
-        showToast('Cargando información publicada en GitHub...');
-
-        const response = await fetch(`${DATA_URL}?v=${Date.now()}`, {
-          method: 'GET',
-          cache: 'no-store'
-        });
-
-        if (!response.ok) {
-          throw new Error(`No se pudo cargar el JSON local. Estado HTTP: ${response.status}`);
+        if (!silent) {
+          setSyncStatus('', 'Consultando fuente publicada...');
+          showToast('Actualizando información publicada...');
         }
 
-        const payload = await response.json();
+        const cacheBuster = Date.now();
+        const [dataResult, metaResult] = await Promise.allSettled([
+          fetch(`${DATA_URL}?v=${cacheBuster}`, { method: 'GET', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } }),
+          fetch(`${META_URL}?v=${cacheBuster}`, { method: 'GET', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+        ]);
+
+        if (dataResult.status !== 'fulfilled' || !dataResult.value.ok) {
+          const status = dataResult.status === 'fulfilled' ? dataResult.value.status : 'sin respuesta';
+          throw new Error(`No se pudo cargar el JSON publicado. Estado: ${status}`);
+        }
+
+        const payload = await dataResult.value.json();
         const rawRows = Array.isArray(payload) ? payload : (Array.isArray(payload.data) ? payload.data : []);
-        if (!rawRows.length) {
-          throw new Error('El archivo JSON no contiene registros válidos. Revise data/control-donaciones.json.');
+        if (!rawRows.length) throw new Error('El JSON publicado no contiene registros válidos.');
+
+        let meta = null;
+        if (metaResult.status === 'fulfilled' && metaResult.value.ok) {
+          try { meta = await metaResult.value.json(); } catch (_) { meta = null; }
         }
 
-        const rows = rawRows.map(normalizeImported).filter(d => d.nro);
-        if (!rows.length) {
-          throw new Error('El JSON fue leído, pero no se encontraron registros con Nro.');
-        }
+        const rows = rawRows.map(normalizeImported).filter(d => d.nro !== null && d.nro !== undefined && String(d.nro).trim() !== '');
+        if (!rows.length) throw new Error('El JSON fue leído, pero no se encontraron registros con Nro.');
 
-        setDataSource(rows, `Fuente: JSON GitHub Pages · ${rows.length} registros`);
-        showToast(`Datos cargados desde JSON local: ${rows.length} registros.`);
+        const signature = JSON.stringify(rawRows);
+        const changed = signature !== lastDataSignature;
+        lastDataSignature = signature;
+
+        const declared = Number(meta?.records);
+        const integrityMessage = Number.isFinite(declared) && declared !== rows.length
+          ? `Alerta: JSON ${rows.length} / metadata ${declared}`
+          : `${rows.length} registros validados`;
+
+        if (changed || !dataset.length) {
+          setDataSource(rows, `Sincronizado · ${rows.length} registros`, {
+            resetFilters: resetFilters || !dataset.length,
+            meta,
+            integrityMessage
+          });
+          if (!silent) showToast(`Datos actualizados: ${rows.length} registros publicados.`);
+        } else {
+          updateDataHealth(meta, rows.length, integrityMessage);
+          if (!silent) showToast('La vista ya contiene la versión más reciente publicada.');
+        }
       } catch (error) {
-        console.error('Error al cargar JSON local:', {
-          url: DATA_URL,
-          origen: window.location.origin,
-          mensaje: error.message || String(error),
-          error
-        });
-
-        setDataSource([], 'Fuente no cargada: falta data/control-donaciones.json o tiene estructura inválida');
-        showToast(error.message || 'No se pudo cargar el JSON local. No existen datos hardcodeados de respaldo.');
+        console.error('Error al cargar la fuente publicada:', error);
+        setSyncStatus('error', 'Error de lectura de la fuente publicada');
+        const integrity = document.getElementById('dataIntegrity');
+        if (integrity) integrity.textContent = 'No fue posible validar la fuente';
+        if (!dataset.length) setDataSource([], 'Fuente no cargada', { resetFilters: true, integrityMessage: 'Sin datos disponibles' });
+        if (!silent) showToast(error.message || 'No se pudo cargar el JSON publicado.');
       }
     }
 
@@ -892,7 +1150,9 @@
         try {
           const wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
           const rows = extractRowsFromWorkbook(wb);
-          setDataSource(rows, `Fuente: Excel manual · ${file.name}`);
+          setDataSource(rows, `Excel manual · ${rows.length} registros`, { resetFilters: true, integrityMessage: `${rows.length} registros leídos localmente` });
+          document.getElementById('healthSource').textContent = `Excel manual · ${file.name}`;
+          document.getElementById('lastSync').textContent = 'Carga local (sin publicación)';
           showToast(`Excel cargado correctamente: ${rows.length} registros.`);
         } catch (error) {
           console.error('Error al cargar Excel manual:', error);
@@ -909,11 +1169,13 @@
       document.getElementById('btnReset').addEventListener('click', resetFilters);
       document.getElementById('btnCriticos').addEventListener('click', () => { resetFilters(); activeFilters.semaforo.add('Crítico'); document.querySelectorAll('[data-filter="semaforo"]').forEach(cb => cb.checked = cb.value === 'Crítico'); applyFilters(); });
       document.getElementById('btnExportCsv').addEventListener('click', exportCsv);
+      document.getElementById('btnRefreshData').addEventListener('click', () => loadDataFromJson({ silent: false, resetFilters: false }));
       document.getElementById('btnLoadExcel').addEventListener('click', () => document.getElementById('excelInput').click());
       document.getElementById('excelInput').addEventListener('change', e => e.target.files[0] && loadExcel(e.target.files[0]));
       document.getElementById('openFilters').addEventListener('click', () => document.getElementById('sidebar').classList.add('show'));
       document.addEventListener('click', (e) => { if (window.innerWidth <= 992 && !document.getElementById('sidebar').contains(e.target) && !document.getElementById('openFilters').contains(e.target)) document.getElementById('sidebar').classList.remove('show'); });
-      loadDataFromJson();
+      loadDataFromJson({ silent: false, resetFilters: true });
+      window.setInterval(() => loadDataFromJson({ silent: true, resetFilters: false }), AUTO_REFRESH_MS);
     });
   </script>
 </body>
