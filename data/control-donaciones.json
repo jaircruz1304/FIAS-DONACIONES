@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 529,
+    "diasGestion": 538,
     "semaforo": "Crítico"
   },
   {
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 178,
+    "diasGestion": 187,
     "semaforo": "Crítico"
   },
   {
@@ -53,7 +53,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 187,
+    "diasGestion": 196,
     "semaforo": "Finalizado"
   },
   {
@@ -72,7 +72,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAjAUmzFTKCTJ7zlYECjVatAWrZIHaKD3pZzdRU_iveZZM?e=LZlhJn",
     "detalle": "",
     "observaciones": "",
-    "diasGestion": 53,
+    "diasGestion": 62,
     "semaforo": "Atención"
   },
   {
@@ -91,7 +91,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 109,
+    "diasGestion": 118,
     "semaforo": "Finalizado"
   },
   {
@@ -124,12 +124,12 @@
     "fechaActa": "",
     "estado": "Iniciado",
     "avance": 0.1,
-    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE",
+    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE/vertificación fisica de los equipos 9-9-2026",
     "responsable": "Administrativo Financiero MAE / FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAk7bqePBIbS555cXUkno5aAfrlf7SYWPUJE7udGftJXnE?e=VIzxsM",
-    "detalle": "",
+    "detalle": "Se realiza la verificación fisica de los equipos por parte de TICS del MAE el día 9-9-2026",
     "observaciones": "",
-    "diasGestion": null,
+    "diasGestion": 9,
     "semaforo": "Normal"
   }
 ]
