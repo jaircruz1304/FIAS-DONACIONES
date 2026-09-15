@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "generatedAt": "2026-09-15T22:32:34.382Z",
+=======
+  "generatedAt": "2026-09-15T23:12:08.691Z",
+>>>>>>> Stashed changes
   "records": 7,
   "sheetName": "Control",
   "headerRowIndex": 2,
@@ -25,5 +29,5 @@
   "sourceName": "SharePoint download.aspx con share id",
   "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo",
   "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "bytes": 34266
+  "bytes": 34202
 }
