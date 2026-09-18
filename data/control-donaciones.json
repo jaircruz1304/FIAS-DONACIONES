@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 544,
+    "diasGestion": 547,
     "semaforo": "Crítico"
   },
   {
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 193,
+    "diasGestion": 196,
     "semaforo": "Crítico"
   },
   {
@@ -53,7 +53,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 202,
+    "diasGestion": 205,
     "semaforo": "Finalizado"
   },
   {
@@ -72,7 +72,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAjAUmzFTKCTJ7zlYECjVatAWrZIHaKD3pZzdRU_iveZZM?e=LZlhJn",
     "detalle": "",
     "observaciones": "",
-    "diasGestion": 68,
+    "diasGestion": 71,
     "semaforo": "Atención"
   },
   {
@@ -91,7 +91,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 124,
+    "diasGestion": 127,
     "semaforo": "Finalizado"
   },
   {
@@ -100,18 +100,18 @@
     "beneficiario": "Ministerio de Ambiente y Energía (MAE)",
     "descripcion": "Vehículos y equipo informático.",
     "valor": 122680.64,
-    "fechaIntencion": "",
+    "fechaIntencion": "2026-09-17",
     "respuesta": "Pendiente",
     "fechaActa": "",
-    "estado": "Sin iniciar",
-    "avance": 0,
-    "proximaAccion": "Revision de documentos area juridoca FIAS",
+    "estado": "Iniciado",
+    "avance": 0.2,
+    "proximaAccion": "En espera de respuesta del MAE",
     "responsable": "Juridico FIAS",
-    "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBpHDyvlhV_RJpjSbqSOuWcAWOJXdm91ElCHQX3JFb8VLU?e=oTqPeP",
-    "detalle": "En revision documental",
+    "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAvJbBMfq8ER6xXourLil9aAQhGv_ydKAQNZ1jrI84Dzcc?e=05a3WG",
+    "detalle": "Iniciado",
     "observaciones": "",
-    "diasGestion": null,
-    "semaforo": "Sin iniciar"
+    "diasGestion": 1,
+    "semaforo": "Normal"
   },
   {
     "nro": 7,
@@ -124,12 +124,12 @@
     "fechaActa": "",
     "estado": "Iniciado",
     "avance": 0.1,
-    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE/vertificación fisica de los equipos 9-9-2026",
+    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE/vertificación fisica de los equipos realizada el 9 y 11 de septiembre del 2026",
     "responsable": "Administrativo Financiero MAE / FIAS",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAk7bqePBIbS555cXUkno5aAfrlf7SYWPUJE7udGftJXnE?e=VIzxsM",
-    "detalle": "Se realiza la verificación fisica de los equipos por parte de TICS del MAE el día 9-9-2026",
+    "detalle": "Se realiza la verificación fisica de los equipos por parte de TICS del MAE los días 9 y 11 de septiembre 2026",
     "observaciones": "",
-    "diasGestion": 15,
+    "diasGestion": 18,
     "semaforo": "Normal"
   }
 ]
