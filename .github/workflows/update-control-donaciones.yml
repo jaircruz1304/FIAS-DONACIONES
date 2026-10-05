@@ -1,0 +1,117 @@
+name: Actualizar respaldo JSON de donaciones
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-control-donaciones
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Mostrar versión de Node y npm
+        run: |
+          node --version
+          npm --version
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Verificar estructura de archivos
+        run: |
+          echo "=== Contenido raíz ==="
+          ls -la
+
+          echo "=== Contenido carpeta scripts ==="
+          ls -la scripts || true
+
+          echo "=== Contenido carpeta data ==="
+          ls -la data || true
+
+          echo "=== package.json ==="
+          cat package.json
+
+      - name: Generar JSON de contingencia desde Excel público
+        run: npm run build:data
+
+      - name: Verificar integridad de datos generados
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const rows = JSON.parse(fs.readFileSync('data/control-donaciones.json', 'utf8'));
+          const meta = JSON.parse(fs.readFileSync('data/control-donaciones-meta.json', 'utf8'));
+          if (!Array.isArray(rows) || rows.length === 0) throw new Error('El JSON no contiene registros.');
+          if (Number(meta.records) !== rows.length) throw new Error(`Inconsistencia: JSON=${rows.length}, metadata=${meta.records}`);
+          const missing = rows.filter(r => r.nro === null || r.nro === undefined || String(r.nro).trim() === '');
+          if (missing.length) throw new Error(`Existen ${missing.length} registros sin Nro.`);
+          const ids = rows.map(r => String(r.nro));
+          const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+          if (duplicates.length) throw new Error(`Nro. duplicados: ${[...new Set(duplicates)].join(', ')}`);
+          console.log(`Integridad OK: ${rows.length} registros.`);
+          NODE
+
+      - name: Mostrar diagnóstico de publicación
+        run: |
+          echo "=== Contenido carpeta data después de generar ==="
+          ls -la data
+
+          echo "=== Primeros 500 caracteres del JSON ==="
+          head -c 500 data/control-donaciones.json || true
+          echo ""
+
+          echo "=== Metadata ==="
+          cat data/control-donaciones-meta.json || true
+
+      - name: Publicar respaldo si existen cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          echo "=== Estado antes de publicar ==="
+          git status --short
+
+          if git diff --quiet -- data/control-donaciones.json data/control-donaciones-meta.json; then
+            echo "No hay cambios en los datos."
+            exit 0
+          fi
+
+          echo "Guardando temporalmente los cambios generados..."
+          git stash push -m "datos-generados-donaciones" -- data/control-donaciones.json data/control-donaciones-meta.json
+
+          echo "Sincronizando rama local con origin/main..."
+          git pull --rebase origin main
+
+          echo "Restaurando cambios generados..."
+          git stash pop || true
+
+          echo "Agregando archivos generados..."
+          git add data/control-donaciones.json data/control-donaciones-meta.json
+
+          if git diff --cached --quiet; then
+            echo "Después de sincronizar, no hay cambios que publicar."
+            exit 0
+          fi
+
+          git commit -m "Actualizar datos de donaciones"
+
+          echo "Enviando cambios a GitHub..."
+          git push origin main
