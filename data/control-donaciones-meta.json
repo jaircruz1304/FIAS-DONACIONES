@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T18:38:28.400Z",
+  "generatedAt": "2026-10-05T20:21:00.000Z",
   "records": 8,
   "sheetName": "Control",
   "headerRowIndex": 2,
@@ -22,8 +22,7 @@
     "Días en gestión",
     "Semáforo"
   ],
-  "sourceName": "SharePoint download.aspx con share id",
-  "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQAUjBvkE6TPT7eb5vhBTZxcAaAltunzyoWrEzM5q5mVINo",
-  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "bytes": 35203
+  "sourceName": "Respaldo generado desde Excel adjunto 2026-10-05",
+  "sourceUrl": "CONTROL DE DONACIONES 2025-2026 vf(2).xlsx",
+  "mode": "json-fallback"
 }

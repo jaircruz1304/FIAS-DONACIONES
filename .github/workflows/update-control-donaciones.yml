@@ -1,4 +1,4 @@
-name: Actualizar control de donaciones
+name: Actualizar respaldo JSON de donaciones
 
 on:
   workflow_dispatch:
@@ -50,7 +50,7 @@ jobs:
           echo "=== package.json ==="
           cat package.json
 
-      - name: Generar JSON desde Excel público
+      - name: Generar JSON de contingencia desde Excel público
         run: npm run build:data
 
       - name: Verificar integridad de datos generados
@@ -81,7 +81,7 @@ jobs:
           echo "=== Metadata ==="
           cat data/control-donaciones-meta.json || true
 
-      - name: Publicar cambios si existen
+      - name: Publicar respaldo si existen cambios
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
