@@ -15,7 +15,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgCjANFSRQoGR4KxyYiCF_88ASMDsIYwGHjuOjjtmEGi0Z8?e=6maLZT",
     "detalle": "Ingreso a e-SBYE el 04/06/2025 ante la Dirección Zonal 4 Manabí del Ministerio de Ambiente y Energía. Acta de entrega-recepción N.° 00000003.",
     "observaciones": "Pendiente cambio de propietario en el SRI y matrículas a nombre del beneficiario; los bienes continúan registrados a nombre de FIAS.",
-    "diasGestion": 589,
+    "diasGestion": 596,
     "semaforo": "Crítico"
   },
   {
@@ -25,7 +25,7 @@
     "descripcion": "Donación de vehículos y embarcaciones.",
     "valor": 282965.47,
     "fechaIntencion": "2026-03-06",
-    "respuesta": "Pendiente",
+    "respuesta": "Sin respuesta",
     "fechaActa": "",
     "estado": "En proceso",
     "avance": 0.4,
@@ -34,7 +34,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgBWAnd3qSp8SI_sggsn6KG5AUGrxc62UOq50eE4LEmZ0fQ?e=dple2q",
     "detalle": "Trámite iniciado mediante Oficio Nro. OF-FIAS-DE-2026-144 de 06/03/2026; requerimientos atendidos mediante Oficio Nro. OF-FIAS-DE-2026-0294 de 21/05/2026; monto corregido mediante Oficio Nro. OF-FIAS-DE-2026-302 de 27/05/2026.",
     "observaciones": "El trámite continúa en gestión interna del MAE para la emisión de informes de necesidad, consolidación de información y posterior suscripción del acta de transferencia.",
-    "diasGestion": 238,
+    "diasGestion": 245,
     "semaforo": "Crítico"
   },
   {
@@ -53,7 +53,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgA2hKkDWjZ_QbZACHwqx876ATMazos14WQ6xVSILhKuoAM?e=Oblms6",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 247,
+    "diasGestion": 254,
     "semaforo": "Finalizado"
   },
   {
@@ -72,7 +72,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAjAUmzFTKCTJ7zlYECjVatAWrZIHaKD3pZzdRU_iveZZM?e=LZlhJn",
     "detalle": "",
     "observaciones": "",
-    "diasGestion": 113,
+    "diasGestion": 120,
     "semaforo": "Crítico"
   },
   {
@@ -91,7 +91,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgDI5_2EQtPSQKXuLlTyQqxKAZ3l1tmpGUYfOiyp5ozSxgk?e=V0Wfjw",
     "detalle": "Completo",
     "observaciones": "Completo",
-    "diasGestion": 169,
+    "diasGestion": 176,
     "semaforo": "Finalizado"
   },
   {
@@ -110,8 +110,8 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAvJbBMfq8ER6xXourLil9aAQhGv_ydKAQNZ1jrI84Dzcc?e=05a3WG",
     "detalle": "Iniciado",
     "observaciones": "",
-    "diasGestion": 43,
-    "semaforo": "Normal"
+    "diasGestion": 50,
+    "semaforo": "Atención"
   },
   {
     "nro": 7,
@@ -120,16 +120,16 @@
     "descripcion": "Equipo informático; Drones, Banners, Material didactico",
     "valor": 174435.86,
     "fechaIntencion": "2026-08-31",
-    "respuesta": "Sin respuesta",
+    "respuesta": "Aceptado",
     "fechaActa": "",
     "estado": "Iniciado",
-    "avance": 0.25,
-    "proximaAccion": "A ESPERA DE RESPUESTA DEL MAE/vertificación fisica de los equipos realizada el 9, 11 y 28 de septiembre del 2026",
-    "responsable": "Administrativo Financiero MAE / FIAS",
+    "avance": 0.75,
+    "proximaAccion": "Aceptación recbida el 31 de Octubre del 2026, esta en revision de Asesor Jurídico la tranferencia, previo a la firma del DE",
+    "responsable": "Asesori Jrudifo FIAS/ Dirección Eejcutiva",
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgAk7bqePBIbS555cXUkno5aAfrlf7SYWPUJE7udGftJXnE?e=VIzxsM",
-    "detalle": "Se realiza la verificación fisica de los equipos por parte de TICS del MAE los días 9, 11 y 28 de septiembre 2026",
-    "observaciones": "",
-    "diasGestion": 60,
+    "detalle": "Aceptación recbida el 31 de Octubre del 2026, esta en revision de Asesor Jurídico la tranferencia, previo a la firma del DE",
+    "observaciones": "Solo falta firmar las actas de transferecia FIAS y MAE",
+    "diasGestion": 67,
     "semaforo": "Atención"
   },
   {
@@ -148,7 +148,7 @@
     "expediente": "https://fiasec-my.sharepoint.com/:f:/g/personal/jcruzg_fias_org_ec/IgB2sJ1PGYIuRper2S0KWXtXATIvsGcK0bO90FADw6LbJAw?e=uZsdt7",
     "detalle": "Iniciado",
     "observaciones": "",
-    "diasGestion": 39,
-    "semaforo": "Normal"
+    "diasGestion": 46,
+    "semaforo": "Atención"
   }
 ]
